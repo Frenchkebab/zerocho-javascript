@@ -24,7 +24,9 @@
       let newWord; // 새로 입력한 단어
 
       const onClickButton = () => {
-        if (!word) {
+        // 제시어가 비어있거나 or 입력된 단어가 올바르거나
+        // 둘 중 하나만 true이면 됨!
+        if (!word || word[word.length - 1] === newWord[0]) {
           // 제시어가 비어있는 경우
           word = newWord;
           $word.textContent = word;
@@ -34,28 +36,13 @@
           } else {
             $order.textContent = order + 1;
           }
-          $input.value = ""; // 입력란 비워주기
-          $input.focus(); // 입력창에 커서 두기
         } else {
-          // 제시어가 이미 있는 경우
-          if (word[word.length - 1] === newWord[0]) {
-            // 입력된 단어가 올바른 경우
-            word = newWord;
-            $word.textContent = word;
-            // 순서 변경
-            const order = Number($order.textContent);
-            if (order + 1 > number) {
-              $order.textContent = 1;
-            } else {
-              $order.textContent = order + 1;
-            }
-            $input.value = ""; // 입력란 비워주기
-            $input.focus(); // 입력창에 커서 두기
-          } else {
-            // 제시어가 올바르지 않은 경우
-            alert("올바르지 않은 단어입니다.");
-          }
+          // 제시어가 올바르지 않은 경우
+          alert("올바르지 않은 단어입니다.");
         }
+        // 끝에있는 애들은 빼주기
+        $input.value = ""; // 입력란 비워주기
+        $input.focus(); // 입력창에 커서 두기
       };
 
       // input 받은 단어를 newWord에 넣어줌
