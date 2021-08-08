@@ -8,13 +8,19 @@
   </head>
   <body>
     <div><span id="order">1</span>번째 참가자</div>
-    <div>제시어: <span id="word"></span></div>
+    <div>
+      제시어: <span id="word"><p>p태그</p></span>
+    </div>
     <input type="text" />
     <button>입력</button>
+    <button class="btn">버튼2</button>
+    <button class="btn">버튼3</button>
     <script>
-      const number = prompt("몇 명이 참가하나요?", 10);
-      alert(number);
-      const yesOrNO = confirm("맞나요?");
+      // 자식 태그
+      document.querySelector("div>span");
+
+      // 자손 태그
+      document.querySelector("div p");
     </script>
   </body>
 </html>
