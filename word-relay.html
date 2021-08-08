@@ -8,19 +8,26 @@
   </head>
   <body>
     <div><span id="order">1</span>번째 참가자</div>
-    <div>
-      제시어: <span id="word"><p>p태그</p></span>
-    </div>
+    <div>제시어: <span id="word"></span></div>
     <input type="text" />
     <button>입력</button>
-    <button class="btn">버튼2</button>
-    <button class="btn">버튼3</button>
     <script>
-      // 자식 태그
-      document.querySelector("div>span");
+      const number = parseInt(prompt("몇 명이 참가하나요?"), 10);
+      alert(number);
+      const yesOrNo = confirm("맞나요?");
 
-      // 자손 태그
-      document.querySelector("div p");
+      // input에 글자를 칠 때마다 함수가 실행됨
+      document.querySelector("input").addEventListener("input", (event) => {
+        console.log("글자 입력", event.target.value);
+      });
+
+      const onClick = function () {
+        console.log("버튼 클릭");
+        // return undefined; -> 생략되어 있음
+      };
+
+      // 버튼을 클릭할 때마다 함수가 실행됨
+      document.querySelector("button").addEventListener("click", onClick());
     </script>
   </body>
 </html>
