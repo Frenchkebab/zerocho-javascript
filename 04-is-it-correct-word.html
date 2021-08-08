@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,42 +12,50 @@
     <input type="text" />
     <button>입력</button>
     <script>
+      // 참가자 순서 정하기
       const number = Number(prompt("몇 명이 참가하나요?", 10));
+
       const $button = document.querySelector("button");
       const $input = document.querySelector("input");
       const $word = document.querySelector("#word");
+
       let word; // 제시어
       let newWord; // 새로 입력한 단어
 
       const onClickButton = () => {
-        // 제시어가 비어 있는가?
         if (!word) {
-          // 비어 있다.
-          word = newWord; // 입력한 단어가 제시어가 된다
-
-          // 대부분은 textContent를 사용!
+          // 제시어가 비어있는 경우
+          word = newWord;
           $word.textContent = word;
-          // input처럼 '입력'값은 value를 바꿔주어야 한다!
-          // 나중에 따로 value인 애들만 정리를 해주자!
-          $input.value = "";
-          const order = parseInt($order.textContent);
+          $input.value = ""; // 입력란 비워주기
+          const order = parseInt($order.textContent); // 현재 참가자 순서
           if (order + 1 > number) {
-            $order.textContent = 1; // 저절로 int값으로 들어감
+            $order.textContent = 1;
           } else {
             $order.textContent = order + 1;
           }
-
-          // 바보 입력이 안되는 이유
         } else {
           // 제시어가 이미 있는 경우
+          if (word[word.length] - 1 === newWord[0]) {
+            // 제시어가 올바른 경우
+            word = newWord;
+            $word.textContent = word;
+            $input.value = "";
 
-          //
-          if (word[word.length - 1] === newWord[0]) {
-            // 올바르지 않은가
+            // 순서 변경
+            const order = Number($order.textContent);
+            if (order + 1 > number) {
+              $order.textContent = 1;
+            } else {
+              $order.textContent = order + 1;
+            }
           } else {
+            // 제시어가 올바르지 않은 경우
           }
         }
       };
+
+      // input 받은 단어를 newWord에 넣어줌
       const onInput = (event) => {
         newWord = event.target.value;
       };
