@@ -6,97 +6,35 @@ let numTwo = "";
 const $operator = document.querySelector("#operator");
 const $result = document.querySelector("#result");
 
+const onClickNumber = (number) => () => {
+  // return undefined;
+
+  // 두 번째 자리는 '함수' 자리!
+
+  //   return () =>
+  {
+    if (operator) {
+      numTwo += number;
+    } else {
+      // 비어있다
+      numOne += number;
+    }
+    $result.value += number;
+  } // 고차 함수 (high order function)
+};
+
 // 버튼 하나하나를 자바스크립트 동작으로 정의함
-document.querySelector("#num-0").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "0";
-  } else {
-    // 비어있다
-    numOne += "0";
-  }
-  $result.value += "0";
-});
-document.querySelector("#num-1").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "1";
-  } else {
-    // 비어있다
-    numOne += "1";
-  }
-  $result.value += "1";
-});
-document.querySelector("#num-2").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "2";
-  } else {
-    // 비어있다
-    numOne += "2";
-  }
-  $result.value += "2";
-});
-document.querySelector("#num-3").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "3";
-  } else {
-    // 비어있다
-    numOne += "3";
-  }
-  $result.value += "3";
-});
-document.querySelector("#num-4").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "4";
-  } else {
-    // 비어있다
-    numOne += "4";
-  }
-  $result.value += "4";
-});
-document.querySelector("#num-5").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "5";
-  } else {
-    // 비어있다
-    numOne += "5";
-  }
-  $result.value += "5";
-});
-document.querySelector("#num-6").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "6";
-  } else {
-    // 비어있다
-    numOne += "6";
-  }
-  $result.value += "6";
-});
-document.querySelector("#num-7").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "7";
-  } else {
-    // 비어있다
-    numOne += "7";
-  }
-  $result.value += "7";
-});
-document.querySelector("#num-8").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "8";
-  } else {
-    // 비어있다
-    numOne += "8";
-  }
-  $result.value += "8";
-});
-document.querySelector("#num-9").addEventListener("click", () => {
-  if (operator) {
-    numTwo += "9";
-  } else {
-    // 비어있다
-    numOne += "9";
-  }
-  $result.value += "9";
-});
+document.querySelector("#num-0").addEventListener("click", onClickNumber("0"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("1"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("2"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("3"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("4"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("5"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("6"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("7"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("8"));
+document.querySelector("#num-0").addEventListener("click", onClickNumber("9"));
+
 document.querySelector("#plus").addEventListener("click", () => {});
 document.querySelector("#divide").addEventListener("click", () => {});
 document.querySelector("#multiply").addEventListener("click", () => {});
