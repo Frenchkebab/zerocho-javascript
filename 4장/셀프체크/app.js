@@ -21,11 +21,39 @@ const onClickNumber = (event) => {
 };
 
 const onClickOperator = (op) => () => {
-  if (numOne) {
+  if (numTwo) {
     operator = op;
     $operator.value = op;
+    if (numTwo) {
+      switch (operator) {
+        case "+":
+          $result.value = parseInt(numOne) + parseInt(numTwo);
+          break;
+        // 빼기, 곱하기, 나누기는 문자열이 숫자로 바뀐다!
+        case "-":
+          $result.value = numOne - numTwo;
+          break;
+        case "*":
+          $result.value = numOne * numTwo;
+          break;
+        case "/":
+          $result.value = numOne / numTwo;
+          break;
+        default:
+          break;
+      }
+    } else {
+      alert("숫자를 먼저 입력하세요.");
+    }
+    numOne = $result.value;
+    numTwo = "";
   } else {
-    alert("숫자를 먼저 입력하세요.");
+    if (numOne) {
+      operator = op;
+      $operator.value = op;
+    } else {
+      alert("숫자를 먼저 입력하세요.");
+    }
   }
 };
 
@@ -64,11 +92,11 @@ document.querySelector("#calculate").addEventListener("click", () => {
       default:
         break;
     }
-    numOne = $result.value;
-    numTwo = "";
   } else {
     alert("숫자를 먼저 입력하세요.");
   }
+  numOne = $result.value;
+  numTwo = "";
 });
 
 document.querySelector("#clear").addEventListener("click", () => {
