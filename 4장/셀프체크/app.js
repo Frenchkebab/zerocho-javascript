@@ -24,35 +24,58 @@ const onClickOperator = (op) => () => {
   if (numTwo) {
     operator = op;
     $operator.value = op;
-    if (numTwo) {
-      switch (operator) {
-        case "+":
-          $result.value = parseInt(numOne) + parseInt(numTwo);
-          break;
-        // 빼기, 곱하기, 나누기는 문자열이 숫자로 바뀐다!
-        case "-":
-          $result.value = numOne - numTwo;
-          break;
-        case "*":
-          $result.value = numOne * numTwo;
-          break;
-        case "/":
-          $result.value = numOne / numTwo;
-          break;
-        default:
-          break;
-      }
-    } else {
-      alert("숫자를 먼저 입력하세요.");
+
+    switch (operator) {
+      case "+":
+        $result.value = parseInt(numOne) + parseInt(numTwo);
+        break;
+      // 빼기, 곱하기, 나누기는 문자열이 숫자로 바뀐다!
+      case "-":
+        $result.value = numOne - numTwo;
+        break;
+      case "*":
+        $result.value = numOne * numTwo;
+        break;
+      case "/":
+        $result.value = numOne / numTwo;
+        break;
+      default:
+        break;
     }
     numOne = $result.value;
     numTwo = "";
   } else {
-    if (numOne) {
+    // numTwo가 없는 경우
+    if (operator) {
+      // numTwo는 없지만 operator는 이미 있는 경우
+      console.log("numTwo는 없지만 operator는 이미 있는 경우");
+      if (op === "-") {
+        numTwo += "-";
+        $result.value = numTwo;
+      }
       operator = op;
       $operator.value = op;
     } else {
-      alert("숫자를 먼저 입력하세요.");
+      // numTwo, operator 모두 없는 경우
+      console.log("numTwo, operator 모두 없는 경우");
+
+      if (numOne) {
+        // numOne만 있는 경우
+        console.log("numOne만 있는 경우");
+
+        operator = op;
+        $operator.value = op;
+      } else {
+        // numTwo, operator, numOne모두 없는 경우
+        if (op !== "-") {
+          console.log("numTwo, operator, numOne모두 없는 경우");
+
+          alert("숫자를 먼저 입력하세요.");
+          return;
+        }
+        numOne += "-";
+        $result.value += numOne;
+      }
     }
   }
 };
